@@ -1,6 +1,6 @@
-# appular-docs
+# grunt-appular-docs
 
-> Generate documentation for appular projects with source comments
+> Generate documentation for Appular projects with source comments
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -17,21 +17,23 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-appular-docs');
 ```
 
-## The "appular" task
+## The "docs" task
 
 ### Overview
-In your project's Gruntfile, add a section named `appular` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `docs` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  appular: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
+  docs: {
+    build: {
+      options: {
+        // Task-specific options go here.
+      },
+      files: {
+        // Target-specific file lists and/or options go here.
+      }
+    }
+  }
 })
 ```
 
@@ -50,11 +52,13 @@ If `true` generated JSON will be pretty.
 ```js
 grunt.initConfig({
   docs: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/path/to/appular/folder/**/*.js'],
-    },
-  },
+    build: {
+      options: {},
+      files: {
+        'dest/default_options': ['src/path/to/appular/folder/**/*.js'],
+      }
+    }
+  }
 })
 ```
 
@@ -62,14 +66,16 @@ grunt.initConfig({
 
 ```js
 grunt.initConfig({
-  appular: {
-    options: {
-      pretty: true
-    },
-    files: {
-      'dest/default_options': ['src/path/to/appular/folder/**/*.js'],
-    },
-  },
+  docs: {
+    build: {
+      options: {
+        pretty: true
+      },
+      files: {
+        'dest/default_options': ['src/path/to/appular/folder/**/*.js'],
+      }
+    }
+  }
 })
 ```
 

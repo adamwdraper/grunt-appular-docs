@@ -20,6 +20,20 @@ module.exports = function(grunt) {
             output = {},
             regExpEscape = function(string) {
                 return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            },
+            extract = {
+                tag: function (line) {
+                    return line.match(/^@(\w)+/gi)[0];
+                },
+                version: function (line) {
+                    return line.match(/v[\d\.]+/gi)[0];
+                },
+                description: function(line) {
+                    return line.indexOf(' - ') !== -1 ? line.match(/- (.)*/gi)[0].slice(2) : '';
+                },
+                last: function (line) {
+                    return line.match(/[^\s]+$/gi)[0];
+                }
             };
 
         this.files.forEach(function(file) {
@@ -58,23 +72,23 @@ module.exports = function(grunt) {
 
                                 line.trim();
 
-                                tag = line.match(/^@(\w)+/gi)[0];
+                                tag = extract.tag(line);
 
                                 switch (tag) {
                                     case '@appular':
                                         _.extend(tempModule, {
-                                            version: line.match(/v[\d\.]+/gi)[0],
-                                            description: line.match(/- (.)*$/gi) ? line.match(/- (.)*/gi)[0].slice(2) : ''
+                                            version: extract.version(line),
+                                            description: extract.description(line)
                                         });
                                         break;
                                     case '@link':
                                         _.extend(tempModule, {
-                                            link: line.match(/[^\s]+$/gi)[0]
+                                            link: extract.last(line)
                                         });
                                         break;
                                     case '@define':
                                         _.extend(tempModule, {
-                                            define: line.match(/[^\s]+$/gi)[0]
+                                            define: extract.last(line)
                                         });
                                         break;
                                 }

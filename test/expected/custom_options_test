@@ -12,7 +12,7 @@
                 }
             ],
             "version": "v1.10.2",
-            "description": "Dom library",
+            "description": "",
             "link": "http://www.jquery.com",
             "define": "jquery",
             "plugins": [
