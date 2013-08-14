@@ -74,7 +74,6 @@ module.exports = function(grunt) {
 
                                 tag = extract.tag(line);
 
-
                                 switch (tag) {
                                     case '@appular':
                                         _.extend(tempModule, {
