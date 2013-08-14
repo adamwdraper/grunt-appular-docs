@@ -22,17 +22,26 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-exports.appular = {
+exports.docs = {
   setUp: function(done) {
     // setup here if necessary
     done();
   },
-  test: function(test) {
+  default_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/test');
-    var expected = grunt.file.read('test/expected/test');
+    var actual = grunt.file.read('tmp/default_options_test');
+    var expected = grunt.file.read('test/expected/default_options_test');
     test.equal(actual, expected, 'should describe what the default behavior is.');
+
+    test.done();
+  },
+  custom_options: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/custom_options_test');
+    var expected = grunt.file.read('test/expected/custom_options_test');
+    test.equal(actual, expected, 'should describe what the custom behavior is.');
 
     test.done();
   }
