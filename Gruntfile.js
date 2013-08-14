@@ -30,12 +30,18 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     docs: {
-      test: {
+      default_options: {
+        files: {
+          'tmp/default_options_test': ['test/fixtures/**/*.js'],
+        },
+        filter: 'isFile'
+      },
+      custom_options: {
         options: {
           pretty: true
         },
         files: {
-          'tmp/test': ['test/fixtures/**/*.js'],
+          'tmp/custom_options_test': ['test/fixtures/**/*.js'],
         },
         filter: 'isFile'
       }
