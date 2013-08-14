@@ -1,5 +1,5 @@
 /**
- * @appular v1.10.2 - Dom library
+ * @appular v1.10.2
  * @link http://www.jquery.com
  * @define jquery
  */
