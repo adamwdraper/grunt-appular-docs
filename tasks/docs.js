@@ -60,11 +60,12 @@ module.exports = function(grunt) {
 
                                 tag = line.match(/^@(\w)+/gi)[0];
 
+
                                 switch (tag) {
                                     case '@appular':
                                         _.extend(tempModule, {
                                             version: line.match(/v[\d\.]+/gi)[0],
-                                            description: line.match(/- (.)*$/gi) ? line.match(/- (.)*/gi)[0].slice(2) : ''
+                                            description: line.indexOf(' - ') !== -1 ? line.match(/- (.)*/gi)[0].slice(2) : ''
                                         });
                                         break;
                                     case '@link':
