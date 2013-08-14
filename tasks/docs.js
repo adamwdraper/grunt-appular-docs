@@ -14,12 +14,13 @@ module.exports = function(grunt) {
 
     grunt.registerMultiTask('docs', 'Generate documentation for appular projects with source comments', function() {
 
-        var options = this.options(),
+        var options = this.options({
+                pretty: false
+            }),
             output = {},
             regExpEscape = function(string) {
                 return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
             };
-
 
         this.files.forEach(function(file) {
             var origSrc = file.orig.src[0].match(/^[^*]+/g)[0],
