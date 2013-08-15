@@ -21,6 +21,12 @@
                     "description": "",
                     "link": "http://www.jqueryhotkeys.com",
                     "define": "something/something.htmlc",
+                    "functions": [
+                        {
+                            "name": "test",
+                            "description": "keyup events"
+                        }
+                    ],
                     "name": "hotkey"
                 }
             ]
@@ -39,6 +45,12 @@
             "version": "v0.1.2",
             "description": "makes calls to api and returns data to a callback",
             "define": "plugins/photo/plugin",
+            "functions": [
+                {
+                    "name": "ajax",
+                    "description": ""
+                }
+            ],
             "name": "photo"
         }
     ],
@@ -47,6 +59,12 @@
             "version": "v0.1.2",
             "description": "makes calls to api and returns data to a callback",
             "define": "api",
+            "functions": [
+                {
+                    "name": "ajax",
+                    "description": "make ajax call to api"
+                }
+            ],
             "name": "api"
         }
     ]

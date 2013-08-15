@@ -25,6 +25,9 @@ module.exports = function(grunt) {
                 tag: function (line) {
                     return line.match(/^@(\w)+/gi)[0];
                 },
+                name: function (line) {
+                    return line.split(' ')[1];
+                },
                 version: function (line) {
                     return line.match(/v[\d\.]+/gi)[0];
                 },
@@ -91,6 +94,14 @@ module.exports = function(grunt) {
                                             define: extract.last(line)
                                         });
                                         break;
+                                    case '@function':
+                                        if (!tempModule.functions) {
+                                            tempModule.functions = [];
+                                        }
+                                        tempModule.functions.push({
+                                            name: extract.name(line),
+                                            description: extract.description(line)
+                                        });
                                 }
                             });
                         }
