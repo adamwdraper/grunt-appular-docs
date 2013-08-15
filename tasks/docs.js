@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                     comments.forEach(function(comment) {
                         var doc = {};
                         
-                        // extracts all tags
+                        // extracts all lines with a tag
                         doc.lines = comment.match(/(@.*[^\r\n])/g);
 
                         if (doc.lines) {
@@ -80,6 +80,7 @@ module.exports = function(grunt) {
                                 switch (tag) {
                                     case 'appular':
                                         _.extend(tempModule, {
+                                            name: extract.name(line),
                                             version: extract.version(line),
                                             description: extract.description(line)
                                         });
@@ -124,8 +125,6 @@ module.exports = function(grunt) {
                     parent = _.find(output[directories[0]], function (parent) {
                         return parent.name === directories[1];
                     });
-
-                    module.name = directories.length === 2 ? directories[1] : file.split('.')[0];
 
                     if (directories.length === 2) {
                         if (!parent) {

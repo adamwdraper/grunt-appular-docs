@@ -1,5 +1,5 @@
 /**
-@appular v1.3
+@appular hotkeys v1.3
     @link http://www.jqueryhotkeys.com
     @define something/something.htmlc
 */

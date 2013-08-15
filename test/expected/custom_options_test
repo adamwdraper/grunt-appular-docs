@@ -4,11 +4,11 @@
             "name": "jquery",
             "extensions": [
                 {
+                    "name": "jqueryFunctions",
                     "version": "v1.3",
                     "description": "jquery functions",
                     "link": "http://www.jqueryfunctions.com",
-                    "define": "libraries/jquery/extensions/functions",
-                    "name": "functions"
+                    "define": "libraries/jquery/extensions/functions"
                 }
             ],
             "version": "v1.10.2",
@@ -17,6 +17,7 @@
             "define": "jquery",
             "plugins": [
                 {
+                    "name": "hotkeys",
                     "version": "v1.3",
                     "description": "",
                     "link": "http://www.jqueryhotkeys.com",
@@ -26,14 +27,14 @@
                             "name": "test",
                             "description": "keyup events"
                         }
-                    ],
-                    "name": "hotkey"
+                    ]
                 }
             ]
         }
     ],
     "modules": [
         {
+            "name": "userBar",
             "version": "v0.1.0",
             "description": "makes calls to api and returns data to a callback",
             "define": "modules/user-bar/module",
@@ -42,12 +43,12 @@
                     "name": "dataChanged",
                     "description": "fired when any data is changed after initial load."
                 }
-            ],
-            "name": "user-bar"
+            ]
         }
     ],
     "plugins": [
         {
+            "name": "photo",
             "version": "v0.1.2",
             "description": "makes calls to api and returns data to a callback",
             "define": "plugins/photo/plugin",
@@ -62,12 +63,12 @@
                     "name": "dataChanged",
                     "description": "fired when any data is changed after initial load."
                 }
-            ],
-            "name": "photo"
+            ]
         }
     ],
     "utilities": [
         {
+            "name": "api",
             "version": "v0.1.2",
             "description": "makes calls to api and returns data to a callback",
             "define": "api",
@@ -86,8 +87,7 @@
                     "name": "dataChanged",
                     "description": "fired when any data is changed after initial load"
                 }
-            ],
-            "name": "api"
+            ]
         }
     ]
 }
