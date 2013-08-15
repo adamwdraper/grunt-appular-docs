@@ -4,7 +4,7 @@
     @define something/something.htmlc
 */
 
-var x = '@somehthing';
+var x = '@something';
 
 /*
  * @function test - keyup events
