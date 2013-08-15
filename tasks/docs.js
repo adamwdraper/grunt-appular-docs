@@ -23,7 +23,10 @@ module.exports = function(grunt) {
             },
             extract = {
                 tag: function (line) {
-                    return line.match(/^@(\w)+/gi)[0];
+                    return line.match(/^@(\w)+/gi)[0].slice(1);
+                },
+                name: function (line) {
+                    return line.split(' ')[1];
                 },
                 version: function (line) {
                     return line.match(/v[\d\.]+/gi)[0];
@@ -75,22 +78,31 @@ module.exports = function(grunt) {
                                 tag = extract.tag(line);
 
                                 switch (tag) {
-                                    case '@appular':
+                                    case 'appular':
                                         _.extend(tempModule, {
                                             version: extract.version(line),
                                             description: extract.description(line)
                                         });
                                         break;
-                                    case '@link':
+                                    case 'link':
                                         _.extend(tempModule, {
                                             link: extract.last(line)
                                         });
                                         break;
-                                    case '@define':
+                                    case 'define':
                                         _.extend(tempModule, {
                                             define: extract.last(line)
                                         });
                                         break;
+                                    case 'function':
+                                    case 'event':
+                                        if (!tempModule[tag + 's']) {
+                                            tempModule[tag + 's'] = [];
+                                        }
+                                        tempModule[tag + 's'].push({
+                                            name: extract.name(line),
+                                            description: extract.description(line)
+                                        });
                                 }
                             });
                         }

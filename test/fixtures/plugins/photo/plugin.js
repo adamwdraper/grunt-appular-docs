@@ -4,7 +4,7 @@
 */
 
 /**
-@function ajax - make ajax call to api
+@function ajax
 */
 
 /**
