@@ -13,5 +13,5 @@
 */
 
 /**
-@collection data - datas
+@function data - datas
 */
