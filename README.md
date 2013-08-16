@@ -79,6 +79,84 @@ grunt.initConfig({
 })
 ```
 
+## Docs
+
+Documentation for this task to extract can be added by using inline commenting using the tags documented below.
+
+### Document Blocks
+
+#### @appular
+
+```js
+/*
+ * @appular name [version][ - description]
+ */
+```
+
+The @appular block needs to appear at the top of any module that you want to document. Avaliable tags to use in this block include:
+
+* @define path/used/in/requirejs
+* @link http://url.documentation.com
+
+Example - Defining and appular module named user bar
+
+```js
+/*
+ * @appular userBar v1.0.1 - designed to store variables for apps.
+ * @define modules/user-bar/module
+ * @link http://www.mysite.com
+ */
+```
+
+#### @function
+
+```js
+/*
+ * @function name[ - description]
+ */
+```
+
+The @function tag can appear anywhere inside a module.
+
+Example - Defining a function named render
+
+```js
+/*
+ * @function render - creates and inserts html for module
+ */
+```
+
+#### @event
+
+```js
+/*
+ * @event name[ - description]
+ */
+```
+
+The @event tag can appear anywhere inside a module.
+
+Example - Defining a event named rendered
+
+```js
+/*
+ * @event rendered - fired when html is rendered
+ */
+```
+
+Formatting requirements
+
+* name
+  * required 
+  * camelcased
+* version
+  * optional 
+  * needs to be in the format of `v1.2.3` or `v1.0`
+* description
+  * optional
+  * needs to be preseeded by ` - ` for parser to recognize it.
+
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 

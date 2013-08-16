@@ -1,5 +1,5 @@
 /**
-@appular v0.1.2 - makes calls to api and returns data to a callback
+@appular api v0.1.2 - makes calls to api and returns data to a callback
     @extends backbone.view
     @define api
 */
