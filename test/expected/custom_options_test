@@ -2,34 +2,36 @@
     "libraries": [
         {
             "name": "jquery",
-            "extensions": [
-                {
-                    "name": "jqueryFunctions",
-                    "version": "v1.3",
-                    "description": "jquery functions",
-                    "link": "http://www.jqueryfunctions.com",
-                    "define": "libraries/jquery/extensions/functions"
-                }
-            ],
+            "extras": {
+                "extensions": [
+                    {
+                        "name": "jqueryFunctions",
+                        "version": "v1.3",
+                        "description": "jquery functions",
+                        "link": "http://www.jqueryfunctions.com",
+                        "define": "libraries/jquery/extensions/functions"
+                    }
+                ],
+                "plugins": [
+                    {
+                        "name": "hotkeys",
+                        "version": "v1.3",
+                        "description": "",
+                        "link": "http://www.jqueryhotkeys.com",
+                        "define": "something/something.htmlc",
+                        "functions": [
+                            {
+                                "name": "test",
+                                "description": "keyup events"
+                            }
+                        ]
+                    }
+                ]
+            },
             "version": "v1.10.2",
             "description": "",
             "link": "http://www.jquery.com",
-            "define": "jquery",
-            "plugins": [
-                {
-                    "name": "hotkeys",
-                    "version": "v1.3",
-                    "description": "",
-                    "link": "http://www.jqueryhotkeys.com",
-                    "define": "something/something.htmlc",
-                    "functions": [
-                        {
-                            "name": "test",
-                            "description": "keyup events"
-                        }
-                    ]
-                }
-            ]
+            "define": "jquery"
         }
     ],
     "modules": [

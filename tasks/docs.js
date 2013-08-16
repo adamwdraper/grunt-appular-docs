@@ -140,11 +140,15 @@ module.exports = function(grunt) {
                             newParent = true;
                         }
 
-                        if (!parent[directories[2]]) {
-                            parent[directories[2]] = [];
+                        if (!parent.extras) {
+                            parent.extras = {};
                         }
 
-                        parent[directories[2]].push(module);
+                        if (!parent.extras[directories[2]]) {
+                            parent.extras[directories[2]] = [];
+                        }
+
+                        parent.extras[directories[2]].push(module);
 
                         if (newParent) {
                             output[directories[0]].push(parent);
