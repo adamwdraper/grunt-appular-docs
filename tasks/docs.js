@@ -10,7 +10,12 @@
 
 module.exports = function(grunt) {
     var fs = require('fs'),
-        _ = require('underscore');
+        _ = require('underscore'),
+        ifNotInDefine = function (object, property, value) {
+            if (property in object) {
+                object[property] = value || {};
+            }
+        };
 
     grunt.registerMultiTask('docs', 'Generate documentation for appular projects with source comments', function() {
 
@@ -36,6 +41,27 @@ module.exports = function(grunt) {
                 },
                 last: function (line) {
                     return line.match(/[^\s]+$/gi)[0];
+                },
+                param: function (line, tag) {
+                    var param = {},
+                        name = extract.name(line),
+                        isOptional = false;
+
+                    if (name.indexOf('[') !== -1) {
+                        name = name.slice(1, -1);
+                        isOptional = true;
+                    }
+
+                    param = {
+                        name: name.split(':')[0],
+                        type: name.split(':')[1]
+                    };
+
+                    if (tag === 'param') {
+                        param.isOptional = isOptional;
+                    }
+
+                    return param;
                 }
             };
 
@@ -53,8 +79,7 @@ module.exports = function(grunt) {
                     comments,
                     newParent,
                     parent,
-                    module = {},
-                    tempModule = {};
+                    module = {};
 
                 if (data.indexOf('@appular') !== -1) {
                     // docs found
@@ -64,56 +89,84 @@ module.exports = function(grunt) {
                     comments = data.match(/\/\*+([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\//gm);
 
                     comments.forEach(function(comment) {
-                        var doc = {};
+                        var doc = {
+                            // extracts all lines with a tag
+                            lines: comment.match(/(@.*[^\r\n])/g),
+                            data: {},
+                            type: {}
+                        };
                         
-                        // extracts all lines with a tag
-                        doc.lines = comment.match(/(@.*[^\r\n])/g);
-
                         if (doc.lines) {
                             doc.lines.forEach(function(line) {
-                                var tag;
+                                var tag,
+                                    param;
 
                                 line.trim();
 
                                 tag = extract.tag(line);
 
+                                // doc type for definition tags
                                 switch (tag) {
                                     case 'appular':
-                                        _.extend(tempModule, {
+                                    case 'function':
+                                    case 'event':
+                                        doc.type = tag;
+                                        break;
+                                }
+
+                                switch (tag) {
+                                    case 'appular':
+                                        _.extend(doc.data, {
                                             name: extract.name(line),
                                             version: extract.version(line),
                                             description: extract.description(line)
                                         });
                                         break;
                                     case 'link':
-                                        _.extend(tempModule, {
+                                        _.extend(doc.data, {
                                             link: extract.last(line)
                                         });
                                         break;
                                     case 'define':
-                                        _.extend(tempModule, {
+                                        _.extend(doc.data, {
                                             define: extract.last(line)
                                         });
                                         break;
                                     case 'function':
                                     case 'event':
-                                        if (!tempModule[tag + 's']) {
-                                            tempModule[tag + 's'] = [];
-                                        }
-                                        tempModule[tag + 's'].push({
+                                        _.extend(doc.data, {
                                             name: extract.name(line),
                                             description: extract.description(line)
                                         });
+                                        break;
+                                    case 'param':
+                                    case 'return':
+                                        if (!doc.data[tag + 's']) {
+                                            doc.data[tag + 's'] = [];
+                                        }
+
+                                        doc.data[tag + 's'].push(extract.param(line, tag));
+                                        break;
                                 }
                             });
-                        }
 
-                        // make sure module has a define property
-                        if (!tempModule.define) {
-                            tempModule.define = define.slice(-3) === '.js' ? define.slice(0, -3) : define;
+                            // add doc data to module
+                            switch (doc.type) {
+                                case 'appular':
+                                    // make sure module has a define property
+                                    if (!doc.data.define) {
+                                        doc.data.define = define.slice(-3) === '.js' ? define.slice(0, -3) : define;
+                                    }
+                                    // add doc data to module base
+                                    _.extend(module, doc.data);
+                                    break;
+                                case 'function':
+                                case 'event':
+                                    module[doc.type + 's'] = module[doc.type + 's'] || [];
+                                    module[doc.type + 's'].push(doc.data);
+                                    break;
+                            }                            
                         }
-
-                        _.extend(module, tempModule);
                     });
 
                     // make sure root types are defined

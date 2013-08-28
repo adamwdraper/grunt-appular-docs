@@ -6,10 +6,6 @@
 
 var x = '@something';
 
-/*
- * @function test - keyup events
-*/
-
 /* something */
 
 // something

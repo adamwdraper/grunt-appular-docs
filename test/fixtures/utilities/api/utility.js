@@ -5,8 +5,11 @@
 */
 
 /**
-@function ajax - make ajax call to api
-*/
+ *
+ * @function titleize - title case a string
+ * @param title:string - the title to manipulate
+ * @return title:string
+ */
 
 /**
 @event dataChanged - fired when any data is changed after initial load

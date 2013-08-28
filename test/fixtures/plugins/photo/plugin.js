@@ -5,6 +5,9 @@
 
 /**
 @function ajax
+@param url:string - the sting to manipulate
+@param [data:object] - data for request
+@return response:object - jquery data from request
 */
 
 /**
