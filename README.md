@@ -113,6 +113,8 @@ Example - Defining and appular module named user bar
 ```js
 /*
  * @function name[ - description]
+ * @param name[:type][ - description]
+ * @return name[:type][ - description]
  */
 ```
 
@@ -123,6 +125,9 @@ Example - Defining a function named render
 ```js
 /*
  * @function render - creates and inserts html for module
+ * @param template:string - template for module
+ * @param [data:object] - optional data for template
+ * @return this:object - current view
  */
 ```
 
