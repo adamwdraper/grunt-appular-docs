@@ -28,19 +28,25 @@ module.exports = function(grunt) {
             },
             extract = {
                 tag: function (line) {
-                    return line.match(/^@(\w)+/gi)[0].slice(1);
+                    return line.match(/^@([\w]+)/i)[1];
                 },
                 name: function (line) {
                     return line.split(' ')[1];
                 },
                 version: function (line) {
-                    return line.match(/v[\d\.]+/gi)[0];
+                    var version = line.match(/v[\d\.]+/i);
+                    
+                    return version ? version[0] : '';
                 },
                 description: function(line) {
-                    return line.indexOf(' - ') !== -1 ? line.match(/- (.)*/gi)[0].slice(2) : '';
+                    var description = line.match(/ - (.+)/i);
+                    
+                    return description ? description[1] : '';
                 },
                 last: function (line) {
-                    return line.match(/[^\s]+$/gi)[0];
+                    var last = line.match(/[^\s]+$/i);
+
+                    return last ? last[0] : '';
                 },
                 param: function (line, tag) {
                     var param = {},

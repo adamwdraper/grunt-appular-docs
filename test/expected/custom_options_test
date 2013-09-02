@@ -7,7 +7,7 @@
                     {
                         "path": "libraries/jquery/extensions/functions.js",
                         "name": "jqueryFunctions",
-                        "version": "v1.3",
+                        "version": "v1.0",
                         "description": "jquery functions",
                         "link": "http://www.jqueryfunctions.com",
                         "define": "libraries/jquery/extensions/functions",
@@ -66,7 +66,7 @@
         {
             "path": "plugins/photo/plugin.js",
             "name": "photo",
-            "version": "v0.1.2",
+            "version": "",
             "description": "makes calls to api and returns data to a callback",
             "define": "plugins/photo/plugin",
             "functions": [
