@@ -1,5 +1,5 @@
 /**
-@appular jqueryFunctions v1.3 - jquery functions
+@appular jqueryFunctions v1.0 - jquery functions
     @link http://www.jqueryfunctions.com
 */
 

@@ -1,7 +1,7 @@
 {
   "name": "grunt-appular-docs",
   "description": "Generate documentation for Appular projects with source comments",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/adamwdraper/grunt-appular-docs",
   "author": {
     "name": "Adam Draper",

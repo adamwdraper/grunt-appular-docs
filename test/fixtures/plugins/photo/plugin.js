@@ -1,5 +1,5 @@
 /**
-@appular photo v0.1.2 - makes calls to api and returns data to a callback
+@appular photo - makes calls to api and returns data to a callback
     @extends backbone.view
 */
 
