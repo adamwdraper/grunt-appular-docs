@@ -54,7 +54,8 @@ module.exports = function(grunt) {
 
                     param = {
                         name: name.split(':')[0],
-                        type: name.split(':')[1]
+                        type: name.split(':')[1],
+                        description: extract.description(line)
                     };
 
                     if (tag === 'param') {
@@ -92,7 +93,9 @@ module.exports = function(grunt) {
                         var doc = {
                             // extracts all lines with a tag
                             lines: comment.match(/(@.*[^\r\n])/g),
-                            data: {},
+                            data: {
+                                path: define
+                            },
                             type: {}
                         };
                         
