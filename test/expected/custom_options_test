@@ -1,4 +1,4 @@
-{
+define({
     "libraries": [
         {
             "name": "jquery",
@@ -149,4 +149,4 @@
             ]
         }
     ]
-}
+});
