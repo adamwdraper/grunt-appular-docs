@@ -220,7 +220,7 @@ module.exports = function(grunt) {
             });
 
             // format json for writing
-            output = options.pretty ? JSON.stringify(output, null, 4) : JSON.stringify(output);
+            output = 'define(' + (options.pretty ? JSON.stringify(output, null, 4) : JSON.stringify(output)) + ');';
 
             grunt.file.write(file.dest, output);
 
